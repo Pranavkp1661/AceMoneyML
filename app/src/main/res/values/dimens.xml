@@ -2,4 +2,11 @@
 <resources>
     <dimen name="app_margin">20dp</dimen>
     <dimen name="dimen_margin_common">16dp</dimen>
+    <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="large_item_margin">16dp</dimen>
+    <dimen name="dimen_60dp">60dp</dimen>
+    <dimen name="dimen_1dp">1dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
 </resources>

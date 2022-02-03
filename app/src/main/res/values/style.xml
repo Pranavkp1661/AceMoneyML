@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="pb_circular_splash_screen_style" parent="Widget.AppCompat.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/pb_circular_shape</item>
         <item name="android:animationResolution">@integer/material_motion_duration_long_1</item>
         <item name="android:indeterminateDuration">1000</item>
     </style>
+
+    <style name="toolbar_header_style">
+        <item name="android:titleTextColor" tools:ignore="NewApi">@color/white</item>
+        <item name="textAllCaps">true</item>
+        <item name="tabIconTint">@color/white</item>
+        <item name="tint">@color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:tint">@color/white</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <style name="tv_heading_style" parent="Widget.AppCompat.TextView">
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/colorBasic2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="et_basic_style" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorBlackText</item>
+        <item name="android:fontFamily">@font/my_raid_pro_regular</item>
+        <item name="android:gravity">start|center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:iconTint" tools:ignore="NewApi">@color/black</item>
+        <item name="android:drawableTint" tools:ignore="NewApi">@color/black</item>
+        <item name="android:textColorHint">@color/colorGrey</item>
+        <item name="android:tint">@color/black</item>
+        <item name="background">@drawable/et_bg_basic_shape</item>
+        <item name="android:background">@drawable/et_bg_basic_shape</item>
+        <item name="android:paddingStart">@dimen/dimen_10dp</item>
+        <item name="android:paddingEnd">@dimen/dimen_10dp</item>
+        <item name="android:drawablePadding">@dimen/dimen_10dp</item>
+    </style>
+
+    <style name="tv_new_reg_style" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/my_raid_pro_regular</item>
+        <item name="android:textColor">@color/colorBlackText</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="bt_basic_style" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="fontFamily">@font/my_raid_pro_regular</item>
+        <item name="android:fontFamily">@font/my_raid_pro_regular</item>
+        <item name="background">@drawable/bt_bg_selector_shape</item>
+        <item name="android:background">@drawable/bt_bg_selector_shape</item>
+        <item name="maxHeight">@dimen/dimen_60dp</item>
+        <item name="android:maxHeight">@dimen/dimen_60dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <dimen name="dimen_10dp">10dp</dimen>
 </resources>

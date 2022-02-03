@@ -11,4 +11,11 @@
     <color name="colorBasic2">#B1E5FA</color>
     <color name="colorBasic3">#2375B8</color>
     <color name="colorTransparent">#002375B8</color>
+    <color name="colorBlackText">#FF333333</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorReadOnly">#80000000</color>
+    <color name="colorTvReadOnlyWidth">#B1E5FA</color>
+    <color name="colorTransparentBlack">#40A6A0A0</color>
+    <color name="colorGrey">#979595</color>
+    <color name="colorTransparentWhite">#BCFFFFFF</color>
 </resources>

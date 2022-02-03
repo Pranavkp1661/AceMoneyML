@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/bg_lower_shape.xml" value="0.1145" />
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/bt_on_normal_shape.xml" value="0.1145" />
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/et_bg_basic_shape.xml" value="0.1145" />
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1145" />
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1145" />
+        <entry key="..\:/AceMoneyML/app/src/main/res/drawable/login_bg_shape.xml" value="0.1145" />
         <entry key="..\:/AceMoneyML/app/src/main/res/drawable/pb_circular_shape.xml" value="0.1145" />
         <entry key="..\:/AceMoneyML/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AceMoneyML/app/src/main/res/layout/activity_main.xml" value="0.25" />
