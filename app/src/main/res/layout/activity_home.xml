@@ -26,11 +26,21 @@
         android:orientation="vertical"
         android:weightSum="3">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imvImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/ic_baseline_perm_identity_24"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/dimen_2dp" />
+
         <TextView
             android:id="@+id/tvCustomerName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0dp"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_20sp" />
