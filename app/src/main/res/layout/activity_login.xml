@@ -50,7 +50,7 @@
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/etEmailLogin"
             style="@style/et_basic_style"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -59,7 +59,7 @@
             android:ems="10"
             android:hint="@string/str_email"
             android:imeOptions="flagNoExtractUi"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
         <EditText
             android:id="@+id/etPassword"
             style="@style/et_basic_style"

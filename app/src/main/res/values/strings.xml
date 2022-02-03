@@ -8,4 +8,5 @@
     <string name="str_name">Name</string>
     <string name="str_phone_number">Phone Number</string>
     <string name="str_register">Register</string>
+    <string name="str_home">Home</string>
 </resources>
