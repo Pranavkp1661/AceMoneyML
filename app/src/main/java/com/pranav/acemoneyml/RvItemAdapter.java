@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,10 +21,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class RvItemAdapter extends RecyclerView.Adapter<RvItemAdapter.ViewHolder> {
     Context context;
     List<ActorsModel> actorsModels = new ArrayList<>();
+    ActorsDetailsInterface actorsDetailsInterface;
 
-    public RvItemAdapter(Context context, List<ActorsModel> actorsModels) {
+    public RvItemAdapter(Context context, List<ActorsModel> actorsModels, ActorsDetailsInterface actorsDetailsInterface) {
         this.context = context;
         this.actorsModels = actorsModels;
+        this.actorsDetailsInterface = actorsDetailsInterface;
     }
 
     public void updateAdapter(List<ActorsModel> actorsModels) {
@@ -42,6 +45,9 @@ public class RvItemAdapter extends RecyclerView.Adapter<RvItemAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvActorName.setText(actorsModels.get(position).getActorName());
         Glide.with(context).load(actorsModels.get(position).getImgUrl()).into(holder.imvImage);
+        holder.llItem.setOnClickListener(v -> {
+            actorsDetailsInterface.getDetails(actorsModels.get(position));
+        });
     }
 
     @Override
@@ -49,14 +55,20 @@ public class RvItemAdapter extends RecyclerView.Adapter<RvItemAdapter.ViewHolder
         return actorsModels.size();
     }
 
+    public interface ActorsDetailsInterface {
+        void getDetails(ActorsModel actorsModel);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView imvImage;
         TextView tvActorName;
+        LinearLayout llItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imvImage = itemView.findViewById(R.id.imvImage);
             tvActorName = itemView.findViewById(R.id.tvActorName);
+            llItem = itemView.findViewById(R.id.llItem);
         }
     }
 }

@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AceMoneyML">
         <activity
+            android:name=".ActorDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

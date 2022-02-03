@@ -42,18 +42,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements RvItemAdapter.ActorsDetailsInterface {
     Context context;
     TextView tvCustomerName;
     TextView tvAddress;
     TextView tvLatitude;
     Intent intent;
     String email;
-    private FusedLocationProviderClient fusedLocationProviderClient;
-    private CancellationTokenSource cancellationTokenSource;
     List<ActorsModel> actorsModels = new ArrayList<>();
     RecyclerView rvActors;
     RvItemAdapter rvItemAdapter;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private CancellationTokenSource cancellationTokenSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
         tvAddress = findViewById(R.id.tvAddress);
         tvLatitude = findViewById(R.id.tvLatitude);
         rvActors = findViewById(R.id.rvActors);
-        rvItemAdapter = new RvItemAdapter(context, actorsModels);
+        rvItemAdapter = new RvItemAdapter(context, actorsModels, this);
     }
 
     private void checkAndRequestPermissions() {
@@ -213,5 +213,12 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void getDetails(ActorsModel actorsModel) {
+        Intent intent = new Intent(context, ActorDetailsActivity.class);
+        intent.putExtra("Details", actorsModel);
+        startActivity(intent);
     }
 }
