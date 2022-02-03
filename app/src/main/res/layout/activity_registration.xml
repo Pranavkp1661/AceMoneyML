@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorWhite"
+    android:importantForAutofill="no"
     android:orientation="vertical"
     android:weightSum="14"
-    tools:context=".LoginActivity">
+    tools:ignore="NestedWeights">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbars"
@@ -16,7 +19,7 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/toolbar_header_style"
         android:visibility="visible"
-        app:title="@string/str_login" />
+        app:title="@string/str_new_reg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +29,15 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tvLogin"
+            style="@style/tv_heading_style"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/str_login"
+            android:visibility="gone" />
 
         <ImageView
             android:layout_width="@dimen/dimen_0dp"
@@ -47,55 +59,60 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0dp"
-            android:layout_weight="1" />
+            android:layout_weight=".5" />
+
 
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/etNameReg"
             style="@style/et_basic_style"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_item_margin"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/str_name"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etEmailReg"
+            style="@style/et_basic_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/large_item_margin"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="@string/str_email"
             android:imeOptions="flagNoExtractUi"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
+
+
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etPhoneNumberReg"
             style="@style/et_basic_style"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/large_item_margin"
-            android:layout_weight="1.5"
-            android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
-            android:drawableTint="@color/black"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/str_phone_number"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="number"
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:id="@+id/etPasswordReg"
+            style="@style/et_basic_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/large_item_margin"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="@string/str_password"
             android:imeOptions="flagNoExtractUi"
             android:inputType="textPassword"
-            tools:ignore="UnusedAttribute" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0dp"
-            android:layout_weight="4" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            tools:ignore="TextFields" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btLogin"
-                style="@style/bt_basic_style"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:maxHeight="@dimen/dimen_60dp"
-                android:text="@string/str_login" />
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0dp"
@@ -103,20 +120,22 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="5">
 
-            <TextView
-                android:id="@+id/tvNewReg"
-                style="@style/tv_new_reg_style"
-                android:layout_width="@dimen/dimen_0dp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btRegister"
+                style="@style/bt_basic_style"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/str_new_registration" />
+                android:layout_weight="4"
+                android:maxHeight="@dimen/dimen_60dp"
+                android:text="@string/str_register" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4" />
+            android:layout_height="@dimen/dimen_0dp"
+            android:layout_weight=".5" />
+
     </LinearLayout>
 </LinearLayout>
