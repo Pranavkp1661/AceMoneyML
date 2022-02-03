@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

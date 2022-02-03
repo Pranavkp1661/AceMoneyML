@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="14"
-    tools:context=".HomeActivity">
+    tools:context=".activity.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbars"

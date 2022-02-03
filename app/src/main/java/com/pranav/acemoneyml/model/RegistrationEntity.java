@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

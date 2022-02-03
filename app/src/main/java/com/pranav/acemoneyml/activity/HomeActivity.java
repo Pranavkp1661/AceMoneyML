@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.activity;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
@@ -37,6 +37,9 @@ import com.google.android.gms.tasks.CancellationTokenSource;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.pranav.acemoneyml.model.ActorsModel;
+import com.pranav.acemoneyml.R;
+import com.pranav.acemoneyml.adapter.RvItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

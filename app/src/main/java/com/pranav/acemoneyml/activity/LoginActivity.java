@@ -1,7 +1,8 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.pranav.acemoneyml.R;
+import com.pranav.acemoneyml.database.RoomDataBase;
 
 public class LoginActivity extends AppCompatActivity {
     TextView tvNewReg;
@@ -42,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
             } else if (pass.length() <= 6) {
                 etPassword.setError("Password should be greater than 6 characters ");
             } else {
-                if (RoomDataBase.getInstance(getApplicationContext()).mainDao().getLoginData(email, pass) == null) {
+                int count = RoomDataBase.getInstance(getApplicationContext()).mainDao().getLoginData(email, pass);
+                if (count == 0) {
                     Toast.makeText(context, "Login Error Invalid Email or Password", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(context, HomeActivity.class);

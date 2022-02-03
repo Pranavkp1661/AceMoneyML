@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.pranav.acemoneyml.R;
+import com.pranav.acemoneyml.model.RegistrationEntity;
+import com.pranav.acemoneyml.database.RoomDataBase;
 
 public class RegistrationActivity extends AppCompatActivity {
     Context context;

@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.pranav.acemoneyml.model.ActorsModel;
+import com.pranav.acemoneyml.R;
 
 public class ActorDetailsActivity extends AppCompatActivity {
     Context context;

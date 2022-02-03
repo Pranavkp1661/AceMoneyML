@@ -1,4 +1,4 @@
-package com.pranav.acemoneyml;
+package com.pranav.acemoneyml.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.pranav.acemoneyml.R;
+import com.pranav.acemoneyml.activity.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
-    private static final Integer HANDLER_TIME = 1500;
+    private static final Integer HANDLER_TIME = 3000;
     Context context;
 
     @Override
