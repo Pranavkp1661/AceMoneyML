@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="pb_circular_splash_screen_style" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/pb_circular_shape</item>
+        <item name="android:animationResolution">@integer/material_motion_duration_long_1</item>
+        <item name="android:indeterminateDuration">1000</item>
+    </style>
+</resources>
