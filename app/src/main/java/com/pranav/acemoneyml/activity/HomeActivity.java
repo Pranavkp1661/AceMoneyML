@@ -12,6 +12,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,9 +41,9 @@ import com.google.android.gms.tasks.CancellationTokenSource;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.pranav.acemoneyml.model.ActorsModel;
 import com.pranav.acemoneyml.R;
 import com.pranav.acemoneyml.adapter.RvItemAdapter;
+import com.pranav.acemoneyml.model.ActorsModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +62,48 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
     private FusedLocationProviderClient fusedLocationProviderClient;
     private CancellationTokenSource cancellationTokenSource;
 
+    public static boolean hasInternetConnection(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Network nw = connectivityManager.getActiveNetwork();
+            if (nw == null) return false;
+            NetworkCapabilities actNw = connectivityManager.getNetworkCapabilities(nw);
+            return actNw != null && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH));
+        } else {
+            NetworkInfo nwInfo = connectivityManager.getActiveNetworkInfo();
+            return nwInfo != null && nwInfo.isConnected();
+        }
+    }
+
+    private void initActivity() {
+        tvCustomerName = findViewById(R.id.tvCustomerName);
+        tvAddress = findViewById(R.id.tvAddress);
+        tvLatitude = findViewById(R.id.tvLatitude);
+        rvActors = findViewById(R.id.rvActors);
+        rvItemAdapter = new RvItemAdapter(context, actorsModels, this);
+    }
+
+    private void checkAndRequestPermissions() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> permissions = new ArrayList<>();
+            permissions.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            permissions.add(Manifest.permission.SYSTEM_ALERT_WINDOW);
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                permissions.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
+            }
+            List<String> listPermissionsNeeded = new ArrayList<>();
+            for (String permission : permissions) {
+                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                    listPermissionsNeeded.add(permission);
+                }
+            }
+            if (!listPermissionsNeeded.isEmpty()) {
+                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), 1);
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +111,7 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
         setContentView(R.layout.activity_home);
         initActivity();
         checkAndRequestPermissions();
+        hasInternetConnection(context);
         cancellationTokenSource = new CancellationTokenSource();
         intent = getIntent();
         if (intent.getExtras().getString("email") != null) {
@@ -118,38 +165,6 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
 
         rvItemAdapter.updateAdapter(actorsModels);
     }
-
-    private void initActivity() {
-        tvCustomerName = findViewById(R.id.tvCustomerName);
-        tvAddress = findViewById(R.id.tvAddress);
-        tvLatitude = findViewById(R.id.tvLatitude);
-        rvActors = findViewById(R.id.rvActors);
-        rvItemAdapter = new RvItemAdapter(context, actorsModels, this);
-    }
-
-    private void checkAndRequestPermissions() {
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            List<String> permissions = new ArrayList<>();
-            permissions.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
-            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
-            permissions.add(Manifest.permission.INTERNET);
-            permissions.add(Manifest.permission.READ_PHONE_STATE);
-            permissions.add(Manifest.permission.SYSTEM_ALERT_WINDOW);
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                permissions.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
-            }
-            List<String> listPermissionsNeeded = new ArrayList<>();
-            for (String permission : permissions) {
-                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-                    listPermissionsNeeded.add(permission);
-                }
-            }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), 1);
-            }
-        }
-    }
-
     private void getTheLocation() {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
