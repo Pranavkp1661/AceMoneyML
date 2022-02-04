@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
     private FusedLocationProviderClient fusedLocationProviderClient;
     private CancellationTokenSource cancellationTokenSource;
 
-    public static boolean hasInternetConnection(Context context) {
+    private boolean hasInternetConnection(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Network nw = connectivityManager.getActiveNetwork();
@@ -84,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
     }
 
     private void checkAndRequestPermissions() {
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             List<String> permissions = new ArrayList<>();
             permissions.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -98,9 +99,15 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
                     listPermissionsNeeded.add(permission);
                 }
             }
-            if (!listPermissionsNeeded.isEmpty()) {
-                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), 1);
+            try {
+                if (!listPermissionsNeeded.isEmpty()) {
+                    ActivityCompat.requestPermissions((Activity) context, listPermissionsNeeded.toArray(new String[0]), 1001);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
         }
     }
 
@@ -110,7 +117,6 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
         context = this;
         setContentView(R.layout.activity_home);
         initActivity();
-        checkAndRequestPermissions();
         hasInternetConnection(context);
         cancellationTokenSource = new CancellationTokenSource();
         intent = getIntent();
@@ -125,6 +131,7 @@ public class HomeActivity extends AppCompatActivity implements RvItemAdapter.Act
             Log.e("onCreate: ", "Enable permission");
             enableLocationPermission();
         }
+        checkAndRequestPermissions();
         rvActors.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         rvActors.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
         rvActors.setAdapter(rvItemAdapter);
